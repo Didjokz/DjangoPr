@@ -1,4 +1,7 @@
 from django.http import HttpResponse
+from .models import Person
 
 def mypage(request):
-    return HttpResponse("Its me!")
+    objects = Person.objects.all()
+    
+    

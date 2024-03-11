@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<ul>
+    {% for model in models %}
+        <li>
+            {{ model.name }}
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}
