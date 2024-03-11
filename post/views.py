@@ -1,4 +1,8 @@
 from django.http import HttpResponse
+from .models import Post
+from django.shortcuts import render
 
-def hello_view(request):
-    return HttpResponse("Hello, world!")
+def posts(request):
+    posts = Post.objects.all()
+    context = {'posts': posts}
+    return render(request, "post/index.html", context)
