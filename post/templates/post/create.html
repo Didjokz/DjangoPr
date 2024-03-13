@@ -4,8 +4,34 @@
 
 <form method="post" action="{% url 'create_post' %}">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Отправить</button>
+
+    <input 
+        type="text" 
+        class="form-control mt-2"
+        name="{{ form.title.html_name }}" 
+        placeholder="Title...">
+
+	<!-- errors validation -->
+	{% if form.title.errors %}
+        {% for error in form.title.errors %}
+            <span class="error">{{ error }}</span>
+        {% endfor %}
+	{% endif %}
+
+    <input 
+        type="text" 
+        class="form-control mt-2"
+        name="{{ form.text.html_name }}" 
+        placeholder="Text...">
+
+	<!-- errors validation -->
+	{% if form.text.errors %}
+        {% for error in form.text.errors %}
+            <span class="error">{{ error }}</span>
+        {% endfor %}
+	{% endif %}
+
+    <button class="form-control btn btn-success mt-2" type="submit">Отправить</button>
 </form>
 
 {% endblock content %}
